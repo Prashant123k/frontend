@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axiosInstance from "../utils/axiosConfig";
 import {
   Button,
   Form,
@@ -11,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { FaUserPlus } from "react-icons/fa"; // Register icon
 import { useNavigate } from "react-router-dom"; // To navigate to the Register page
+import api from "../api";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -30,9 +30,7 @@ const LoginPage = () => {
     setSuccess("");
 
     try {
-      const response = await axiosInstance.post("/users/login", formData);
-
-      // Handle successful login (e.g., store token in localStorage)
+      const response = await api.auth.login(formData);
       localStorage.setItem("token", response.data.token);
       setSuccess("Login successful!");
     } catch (err) {
