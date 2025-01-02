@@ -16,12 +16,14 @@ const App = () => {
   const publicRoutes = [
     { path: "/login", component: <LoginPage /> },
     { path: "/register", component: <RegisterPage /> },
-
+    
     { path: "/", component: <HomePage /> },
     { path: "/product/:id", component: <ProductPage /> },
   ];
 
-  const protectedRoutes = [{ path: "/cart", component: <CartPage /> }];
+  const protectedRoutes = [
+    { path: "/cart", component: <CartPage /> },
+  ];
 
   return (
     <>
